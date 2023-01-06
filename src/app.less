@@ -1,0 +1,28 @@
+#app {
+  height: 100%;
+  overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+[data-theme='dark'] {
+  &,
+  * {
+    color-scheme: dark !important;
+  }
+}
+
+[data-theme='light'] {
+  &,
+  * {
+    color-scheme: light !important;
+  }
+
+  body {
+    background-color: #eff2f5;
+  }
+}
