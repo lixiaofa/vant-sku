@@ -1,16 +1,17 @@
-import { defineComponent   } from 'vue'
-// import { createNamespace } from '../../utils';
+import { defineComponent  } from 'vue'
+
 import { createNamespace } from 'vant/lib/utils';
 import { LIMIT_TYPE } from '../constants';
-// import Stepper from '../../stepper';
 import Stepper from 'vant/lib/stepper';
 
-const namespace  = createNamespace('sku-stepper');
+const [name , t] = createNamespace('sku-stepper');
+// const createComponent = namespace[0];
 
-const t = namespace[2];
+// const t = namespace[2];
 const { QUOTA_LIMIT, STOCK_LIMIT } = LIMIT_TYPE;
 
 export default defineComponent({
+  name,
   props: {
     stock: Number,
     skuEventBus: Object,

@@ -1,4 +1,6 @@
 import path from 'path'
+
+
 import { loadEnv } from 'vite'
 import type { ConfigEnv, UserConfig } from 'vite'
 
@@ -15,7 +17,7 @@ import px2vw from '@yuo/postcss-px2vw'
 import autoprefixer from 'autoprefixer'
 
 import { viteVConsole } from 'vite-plugin-vconsole'
-import mock from './build/mock/createMockServer'
+// import mock from './build/mock/createMockServer'
 
 export default ({ command, mode }: ConfigEnv): UserConfig => {
   const root = process.cwd()
@@ -68,12 +70,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
         },
       }),
 
-      mock({
-        watch: true,
-        mockUrlList: [/api/],
-        cwd: process.cwd(),
-        enable: env.VITE_HTTP_MOCK === 'true' && process.env.NODE_ENV !== 'production',
-      }),
+    
     ],
 
     css: {
@@ -94,6 +91,9 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
 
     resolve: {
       alias: {
+       
+   
+        
         '~@': path.join(__dirname, './src'),
         '@': path.join(__dirname, './src'),
         '~': path.join(__dirname, './src/assets'),

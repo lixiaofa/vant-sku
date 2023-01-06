@@ -1,3 +1,10 @@
+/*
+ * @Description: 
+ * @Author: 司马老贼
+ * @Date: 2023-01-06 11:05:23
+ * @LastEditTime: 2023-01-06 11:11:21
+ * @LastEditors: 司马老贼
+ */
 // import Vue from 'vue';
 
 // export { createNamespace } from './create';

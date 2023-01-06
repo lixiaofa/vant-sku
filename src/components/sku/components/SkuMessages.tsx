@@ -1,16 +1,11 @@
-import { defineComponent   } from 'vue'
-
+import { defineComponent  } from 'vue'
 // Utils
-// import { createNamespace } from '../../utils';
 import { createNamespace } from 'vant/lib/utils';
-// import { isEmail } from '../../utils/validate/email';
 import { isEmail } from '@/utils/validate/email';
-// import { isNumeric } from '../../utils/validate/number';
 import { isNumeric } from '@/utils/validate/number';
+
 // Components
-// import Cell from '../../cell';
 import Cell from 'vant/lib/cell';
-// import Field from '../../field';
 import Field from 'vant/lib/field';
 import SkuImgUploader from './SkuImgUploader';
 import SkuDateTimeField from './SkuDateTimeField';

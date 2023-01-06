@@ -1,14 +1,9 @@
-// import Vue from 'vue';
-import { defineComponent} from 'vue'
+import { defineComponent } from 'vue'
+import {createNamespace} from 'vant/lib/utils'
 const Emitter = require('tiny-emitter');
-
-
-
-// import Popup from '../popup';
+// import Vue from 'vue';
 import Popup from 'vant/lib/popup';
-// import Toast from '../toast';
 import Toast from 'vant/lib/toast';
-// import ImagePreview from '../image-preview';
 import ImagePreview from 'vant/lib/image-preview';
 import SkuHeader from './components/SkuHeader';
 import SkuHeaderItem from './components/SkuHeaderItem';
@@ -18,9 +13,7 @@ import SkuRowPropItem from './components/SkuRowPropItem';
 import SkuStepper from './components/SkuStepper';
 import SkuMessages from './components/SkuMessages';
 import SkuActions from './components/SkuActions';
-// import { createNamespace, isEmpty } from '../utils';
-import { createNamespace } from 'vant/lib/utils';
-import { isEmpty } from '@/utils';
+import {  isEmpty } from '@/utils';
 import {
   isAllSelected,
   isSkuChoosable,
@@ -353,7 +346,6 @@ export default defineComponent({
   },
 
   created() {
-    // const skuEventBus = new Vue();
     const skuEventBus = new Emitter();
     this.skuEventBus = skuEventBus;
 

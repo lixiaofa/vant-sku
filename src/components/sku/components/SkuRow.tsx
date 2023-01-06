@@ -1,31 +1,24 @@
-import { defineComponent} from 'vue'
-
+import { defineComponent  } from 'vue'
 // Utils
-// import { createNamespace } from '../../utils';
-
 import { createNamespace } from 'vant/lib/utils';
-// import { BORDER_BOTTOM } from '../../utils/constant';
 import { BORDER_BOTTOM } from '@/utils/constant';
 // Mixins
 // import { ParentMixin } from '../../mixins/relation';
-// import { ParentMixin } from '@/mixins/relation';
 // import { BindEventMixin } from '../../mixins/bind-event';
-// import { BindEventMixin } from '@/mixins/bind-event';
 
 const [name, bem, t] = createNamespace('sku-row');
 
 export { bem };
-
+// mixins: [
+//   ParentMixin('vanSkuRows'),
+//   BindEventMixin(function (bind) {
+//     if (this.scrollable && this.$refs.scroller) {
+//       bind(this.$refs.scroller, 'scroll', this.onScroll);
+//     }
+//   }),
+// ],
 export default defineComponent({
   name,
-  // mixins: [
-  //   ParentMixin('vanSkuRows'),
-  //   BindEventMixin(function (bind) {
-  //     if (this.scrollable && this.$refs.scroller) {
-  //       bind(this.$refs.scroller, 'scroll', this.onScroll);
-  //     }
-  //   }),
-  // ],
 
   props: {
     skuRow: Object,

@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: 司马老贼
  * @Date: 2022-12-20 10:04:21
- * @LastEditTime: 2023-01-05 17:56:50
+ * @LastEditTime: 2023-01-06 15:50:49
  * @LastEditors: 司马老贼
  */
 import { createApp } from 'vue'
@@ -34,7 +34,7 @@ import Sku from '@/components/sku'
 
 const app = createApp(App)
 
-// app.use(Sku)
+app.component(Sku.name , Sku)
 
 
 app.mount('#app')

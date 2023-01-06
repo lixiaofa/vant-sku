@@ -1,22 +1,20 @@
-import { defineComponent   } from 'vue'
+
+import { defineComponent} from 'vue'
 // Utils
-// import { createNamespace } from '../../utils';
 import { createNamespace } from 'vant/lib/utils';
 import { stringToDate, dateToString } from '../utils/time-helper';
 
 // Components
-// import Popup from '../../popup';
 import Popup from 'vant/lib/popup';
-// import DateTimePicker from '../../datetime-picker';
 import DateTimePicker from 'vant/lib/date-picker';
-// import Field from '../../field';
 import Field from 'vant/lib/field';
 
-const namespace = createNamespace('sku-datetime-field');
-const createComponent = namespace[0];
-const t = namespace[2];
+const [name , t] = createNamespace('sku-datetime-field');
+// const createComponent = namespace[0];
+// const t = namespace[2];
 
 export default defineComponent({
+  name,
   props: {
     value: String,
     label: String,

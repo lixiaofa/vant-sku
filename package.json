@@ -21,6 +21,7 @@
     "echarts": "^5.4.1",
     "lodash-es": "^4.17.21",
     "nprogress": "^0.2.0",
+    "path-browserify": "^1.0.1",
     "pinia": "^2.0.28",
     "pinia-plugin-persistedstate": "^3.0.1",
     "resize-detector": "^0.3.0",

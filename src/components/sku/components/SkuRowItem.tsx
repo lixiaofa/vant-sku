@@ -1,20 +1,17 @@
+import { defineComponent} from 'vue'
+
 import { bem } from './SkuRow';
-// import { createNamespace } from '../../utils';
 import { createNamespace } from 'vant/lib/utils';
 import { isSkuChoosable } from '../utils/sku-helper';
 // import { ChildrenMixin } from '../../mixins/relation';
-import { ChildrenMixin } from '@/mixins/relation';
-
-// import Icon from '../../icon';
 import Icon from 'vant/lib/icon';
-// import Image from '../../image';
 import Image from 'vant/lib/image';
 
-const [createComponent] = createNamespace('sku-row-item');
-
-export default createComponent({
-  mixins: [ChildrenMixin('vanSkuRows')],
-
+const [name] = createNamespace('sku-row-item');
+// mixins: [ChildrenMixin('vanSkuRows')],
+export default defineComponent({
+  name,
+  
   props: {
     lazyLoad: Boolean,
     skuValue: Object,

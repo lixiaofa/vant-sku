@@ -1,25 +1,25 @@
 /*
  * @Description: 
  * @Author: 司马老贼
- * @Date: 2023-01-04 17:02:03
- * @LastEditTime: 2023-01-05 17:02:36
+ * @Date: 2023-01-06 11:17:41
+ * @LastEditTime: 2023-01-06 15:24:34
  * @LastEditors: 司马老贼
  */
 
-import { defineComponent   } from 'vue'
+import { defineComponent  } from 'vue'
+
 // Utils
-// import { createNamespace } from '../../utils';
 import { createNamespace } from 'vant/lib/utils';
 
 // Components
-// import Uploader from '../../uploader';
 import Uploader from 'vant/lib/uploader';
 
-const namespace = createNamespace('sku-img-uploader');
-
-const t = namespace[2];
+const [name , t] = createNamespace('sku-img-uploader');
+// const createComponent = namespace[0];
+// const t = namespace[2];
 
 export default defineComponent({
+  name,
   props: {
     value: String,
     uploadImg: Function,

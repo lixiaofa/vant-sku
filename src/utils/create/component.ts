@@ -1,16 +1,14 @@
 /*
  * @Description: 
  * @Author: 司马老贼
- * @Date: 2023-01-05 14:54:38
- * @LastEditTime: 2023-01-05 15:58:42
+ * @Date: 2023-01-06 11:05:23
+ * @LastEditTime: 2023-01-06 11:08:40
  * @LastEditors: 司马老贼
  */
 /**
  * Create a basic component with common options
  */
-console.log('111111')
 import '../../locale';
-
 import { isFunction } from '..';
 import { camelize } from '../format/string';
 import { SlotsMixin } from '../../mixins/slots';
