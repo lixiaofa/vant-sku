@@ -44,11 +44,12 @@ export default defineComponent({
     },
 
     genTitle() {
+     
       return (
         <div class={bem('title')}>
           {this.skuRow.k}
           {this.skuRow.is_multiple && (
-            <span class={bem('title-multiple')}>（{t('multiple')}）</span>
+            <span class={bem('title-multiple')}> (可多选)</span>
           )}
         </div>
       );
@@ -71,7 +72,7 @@ export default defineComponent({
     },
 
     genContent() {
-      const nodes = this.slots();
+      const nodes = this.$slots.default();
 
       if (this.skuRow.largeImageMode) {
         const top = [];
@@ -112,6 +113,7 @@ export default defineComponent({
   },
 
   render() {
+    
     return (
       <div class={[bem(), BORDER_BOTTOM]}>
         {this.genTitle()}

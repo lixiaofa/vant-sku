@@ -55,7 +55,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
         imports: [
           'vue',
           'vue-router',
-          'vitest',
+         
         ],
         dts: true,
       }),

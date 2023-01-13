@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: 司马老贼
  * @Date: 2023-01-06 11:17:41
- * @LastEditTime: 2023-01-06 15:16:17
+ * @LastEditTime: 2023-01-13 15:30:10
  * @LastEditors: 司马老贼
  */
 import { defineComponent  } from 'vue'
@@ -32,23 +32,23 @@ export default defineComponent({
   },
   setup(props) {
     const createEmitter = (name: string) => () => {
-      props.skuEventBus.$emit(name);
+      props.skuEventBus.emit(name);
     };
   
-    return (
+    return ()=>  (
       <div class={bem()} >
         {props.showAddCartBtn && (
           <Button
             size="large"
             type="warning"
-            text={props.addCartText || t('addCart')}
+            text={props.addCartText || '加入购物车'}
             onClick={createEmitter('sku:addCart')}
           />
         )}
         <Button
           size="large"
           type="danger"
-          text={props.buyText || t('buy')}
+          text={props.buyText || '立即购买'}
           onClick={createEmitter('sku:buy')}
         />
       </div>

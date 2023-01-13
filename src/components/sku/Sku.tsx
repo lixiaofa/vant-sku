@@ -1,17 +1,18 @@
 import { defineComponent } from 'vue'
 import {createNamespace} from 'vant/lib/utils'
-const Emitter = require('tiny-emitter');
+// const Emitter = require('tiny-emitter');
+import emitter from 'tiny-emitter/instance'
 // import Vue from 'vue';
 import Popup from 'vant/lib/popup';
-import Toast from 'vant/lib/toast';
-import ImagePreview from 'vant/lib/image-preview';
-import SkuHeader from './components/SkuHeader';
+import {showToast}  from "vant/lib/toast";
+import {showImagePreview } from 'vant/lib/image-preview';
+import SkuHeader from '@/components/sku/components/SkuHeader';
 import SkuHeaderItem from './components/SkuHeaderItem';
 import SkuRow from './components/SkuRow';
 import SkuRowItem from './components/SkuRowItem';
 import SkuRowPropItem from './components/SkuRowPropItem';
 import SkuStepper from './components/SkuStepper';
-import SkuMessages from './components/SkuMessages';
+// import SkuMessages from './components/SkuMessages';
 import SkuActions from './components/SkuActions';
 import {  isEmpty } from '@/utils';
 import {
@@ -28,12 +29,14 @@ const namespace = createNamespace('sku');
 const [name, bem, t] = namespace;
 const { QUOTA_LIMIT } = LIMIT_TYPE;
 
+
+
 export default defineComponent({
   name,
   props: {
     sku: Object,
     goods: Object,
-    value: Boolean,
+    modelValue: Boolean,
     buyText: String,
     goodsId: [Number, String],
     priceTag: String,
@@ -115,18 +118,35 @@ export default defineComponent({
       }),
     },
   },
+  emits: [
+           'sku-prop-selected',
+           'after-sku-create',
+           'update:modelValue' , 
+           'input' , 
+           'sku-close' , 
+           'sku-selected' , 
+           'sku-reset'
+          ],
+
 
   data() {
+  
+   
     return {
       selectedSku: {},
       selectedProp: {},
       selectedNum: 1,
-      show: this.value,
+      show: this.modelValue,
+      skuRows: []
+     
     };
   },
 
   watch: {
     show(val) {
+      
+      
+      
       this.$emit('input', val);
 
       if (!val) {
@@ -146,7 +166,7 @@ export default defineComponent({
       }
     },
 
-    value(val) {
+    modelValue(val) {
       this.show = val;
     },
 
@@ -159,6 +179,7 @@ export default defineComponent({
   },
 
   computed: {
+  
     skuGroupClass() {
       return [
         'van-sku-group-container',
@@ -313,7 +334,7 @@ export default defineComponent({
       }
 
       return [
-        `${t('stock')} `,
+        `剩余`,
         <span
           class={bem('stock-num', {
             highlight: this.stock < this.stockThreshold,
@@ -321,14 +342,15 @@ export default defineComponent({
         >
           {this.stock}
         </span>,
-        ` ${t('stockUnit')}`,
+        `件`,
       ];
     },
 
     selectedText() {
+    
       if (this.selectedSkuComb) {
         const values = this.selectedSkuValues.concat(this.selectedPropValues);
-        return `${t('selected')} ${values.map((item) => item.name).join(' ')}`;
+        return `已选择 ${values.map((item) => item.name).join(' ')}`;
       }
 
       const unselectedSku = this.skuTree
@@ -341,22 +363,25 @@ export default defineComponent({
         .filter((item) => (this.selectedProp[item.k_id] || []).length < 1)
         .map((item) => item.k);
 
-      return `${t('select')} ${unselectedSku.concat(unselectedProp).join(' ')}`;
+      return `请选择 ${unselectedSku.concat(unselectedProp).join(' ')}`;
     },
   },
 
   created() {
-    const skuEventBus = new Emitter();
+  
+    
+
+    const skuEventBus = emitter ;
     this.skuEventBus = skuEventBus;
 
-    skuEventBus.$on('sku:select', this.onSelect);
-    skuEventBus.$on('sku:propSelect', this.onPropSelect);
-    skuEventBus.$on('sku:numChange', this.onNumChange);
-    skuEventBus.$on('sku:previewImage', this.onPreviewImage);
-    skuEventBus.$on('sku:overLimit', this.onOverLimit);
-    skuEventBus.$on('sku:stepperState', this.onStepperState);
-    skuEventBus.$on('sku:addCart', this.onAddCart);
-    skuEventBus.$on('sku:buy', this.onBuy);
+    skuEventBus.on('sku:select', this.onSelect);
+    skuEventBus.on('sku:propSelect', this.onPropSelect);
+    skuEventBus.on('sku:numChange', this.onNumChange);
+    skuEventBus.on('sku:previewImage', this.onPreviewImage);
+    skuEventBus.on('sku:overLimit', this.onOverLimit);
+    skuEventBus.on('sku:stepperState', this.onStepperState);
+    skuEventBus.on('sku:addCart', this.onAddCart);
+    skuEventBus.on('sku:buy', this.onBuy);
 
     this.resetStepper();
     this.resetSelectedSku();
@@ -569,7 +594,7 @@ export default defineComponent({
         return;
       }
 
-      ImagePreview({
+      showImagePreview({
         images: this.imageList,
         startPosition: index,
         onClose: () => {
@@ -589,19 +614,19 @@ export default defineComponent({
 
       if (action === 'minus') {
         if (this.startSaleNum > 1) {
-          Toast(t('minusStartTip', this.startSaleNum));
+          showToast(`${this.startSaleNum}起售`);
         } else {
-          Toast(t('minusTip'));
+          showToast('至少选择一件');
         }
       } else if (action === 'plus') {
         if (limitType === QUOTA_LIMIT) {
           if (quotaUsed > 0) {
-            Toast(t('quotaUsedTip', quota, quotaUsed));
+            showToast(`每人限购${quota}件，你已购买${quotaUsed}件`);
           } else {
-            Toast(t('quotaTip', quota));
+            showToast(`每人限购${quota}件`);
           }
         } else {
-          Toast(t('soldout'));
+          showToast("库存不足");
         }
       }
     },
@@ -632,7 +657,7 @@ export default defineComponent({
       const error = this.validateSku();
 
       if (error) {
-        Toast(error);
+        showToast(error);
       } else {
         this.$emit(type, this.getSkuData());
       }
@@ -651,10 +676,13 @@ export default defineComponent({
 
     // 当 popup 完全打开后执行
     onOpened() {
+      console.log('skuRows' , this.skuRows)
       this.centerInitialSku();
     },
 
     centerInitialSku() {
+    
+
       (this.$refs.skuRows || []).forEach((it) => {
         const { k_s } = it.skuRow || {};
         it.centerItem(this.initialSku[k_s]);
@@ -662,6 +690,7 @@ export default defineComponent({
     },
   },
 
+ 
   render() {
     if (this.isSkuEmpty) {
       return;
@@ -682,6 +711,7 @@ export default defineComponent({
       selectedSkuComb,
       showHeaderImage,
       disableSoldoutSku,
+      skuRows
     } = this;
 
     const slotsProps = {
@@ -692,21 +722,25 @@ export default defineComponent({
       selectedSku,
       selectedSkuComb,
     };
-
-    const slots = (name) => this.slots(name, slotsProps);
-
-    const Header = slots('sku-header') || (
+    
+    // const slots = (name) => this.slots(name, slotsProps);
+    const slots = this.$slots;
+ 
+  
+  //   <template v-slot:sku-header-image-extra = 'sku-header-image-extra'>
+  //   {slots['sku-header-image-extra']?.(slotsProps)}
+  // </template>
+   
+    const Header = slots['sku-header']?.(slotsProps) || (
       <SkuHeader
         sku={sku}
-        goods={goods}
+        goods={goods} 
         skuEventBus={skuEventBus}
         selectedSku={selectedSku}
         showHeaderImage={showHeaderImage}
       >
-        <template slot="sku-header-image-extra">
-          {slots('sku-header-image-extra')}
-        </template>
-        {slots('sku-header-price') || (
+        {slots['sku-header-image-extra']?.(slotsProps)}
+        {slots['sku-header-price']?.(slotsProps) || (
           <div class="van-sku__goods-price">
             <span class="van-sku__price-symbol">￥</span>
             <span class="van-sku__price-num">{price}</span>
@@ -715,7 +749,7 @@ export default defineComponent({
             )}
           </div>
         )}
-        {slots('sku-header-origin-price') ||
+        {slots['sku-header-origin-price']?.(slotsProps) ||
           (originPrice && (
             <SkuHeaderItem>
               {t('originPrice')} ￥{originPrice}
@@ -729,16 +763,16 @@ export default defineComponent({
         {this.hasSkuOrAttr && !this.hideSelectedText && (
           <SkuHeaderItem>{this.selectedText}</SkuHeaderItem>
         )}
-        {slots('sku-header-extra')}
+        
       </SkuHeader>
     );
-
+    
     const Group =
-      slots('sku-group') ||
+      slots['sku-group']?.(slotsProps) ||
       (this.hasSkuOrAttr && (
         <div class={this.skuGroupClass}>
           {this.skuTree.map((skuTreeItem) => (
-            <SkuRow skuRow={skuTreeItem} ref="skuRows" refInFor>
+            <SkuRow skuRow={skuTreeItem} ref={(el) => skuRows.push(el)}>
               {skuTreeItem.v.map((skuValue) => (
                 <SkuRowItem
                   skuList={skuList}
@@ -769,8 +803,9 @@ export default defineComponent({
           ))}
         </div>
       ));
-
-    const Stepper = slots('sku-stepper') || (
+  
+     
+    const Stepper = slots['sku-stepper']?.(slotsProps) || (
       <SkuStepper
         ref="skuStepper"
         stock={this.stock}
@@ -790,16 +825,16 @@ export default defineComponent({
       />
     );
 
-    const Messages = slots('sku-messages') || (
-      <SkuMessages
-        ref="skuMessages"
-        goodsId={this.goodsId}
-        messageConfig={this.messageConfig}
-        messages={sku.messages}
-      />
-    );
+    // const Messages = slots['sku-messages']?.(slotsProps) || (
+    //   <SkuMessages
+    //     ref="skuMessages"
+    //     goodsId={this.goodsId}
+    //     messageConfig={this.messageConfig}
+    //     messages={sku.messages}
+    //   />
+    // );
 
-    const Actions = slots('sku-actions') || (
+    const Actions = slots['sku-actions']?.(slotsProps) || (
       <SkuActions
         buyText={this.buyText}
         skuEventBus={skuEventBus}
@@ -807,10 +842,12 @@ export default defineComponent({
         showAddCartBtn={this.showAddCartBtn}
       />
     );
+  
 
+ 
     return (
       <Popup
-        vModel={this.show}
+        v-model:show={this.show}
         round
         closeable
         position="bottom"
@@ -820,15 +857,15 @@ export default defineComponent({
         safeAreaInsetBottom={this.safeAreaInsetBottom}
         onOpened={this.onOpened}
       >
-        {Header}
+       {Header}
         <div class="van-sku-body" style={this.bodyStyle}>
-          {slots('sku-body-top')}
+          {slots['sku-body-top']?.(slotsProps)}
           {Group}
-          {slots('extra-sku-group')}
+          {slots['extra-sku-group']?.(slotsProps)}
           {Stepper}
-          {Messages}
+         
         </div>
-        {slots('sku-actions-top')}
+        {slots['sku-actions-top']?.(slotsProps)}
         {Actions}
       </Popup>
     );

@@ -50,7 +50,7 @@ export default defineComponent({
   methods: {
     onSelect() {
       if (this.choosable) {
-        this.skuEventBus.$emit('sku:select', {
+        this.skuEventBus.emit('sku:select', {
           ...this.skuValue,
           skuKeyStr: this.skuKeyStr,
         });
@@ -60,7 +60,7 @@ export default defineComponent({
     onPreviewImg(event) {
       event.stopPropagation();
       const { skuValue, skuKeyStr } = this;
-      this.skuEventBus.$emit('sku:previewImage', {
+      this.skuEventBus.emit('sku:previewImage', {
         ...skuValue,
         ks: skuKeyStr,
         imgUrl: skuValue.imgUrl || skuValue.img_url,

@@ -1,3 +1,10 @@
+/*
+ * @Description: 
+ * @Author: 司马老贼
+ * @Date: 2023-01-06 11:17:41
+ * @LastEditTime: 2023-01-12 11:10:29
+ * @LastEditors: 司马老贼
+ */
 import { defineComponent , type PropType } from 'vue'
 // Utils
 import { createNamespace } from 'vant/lib/utils';
@@ -64,35 +71,40 @@ export default defineComponent({
     showHeaderImage: Boolean,
   },
   setup(props , {slots}) {
-    const {
-      sku,
-      goods,
-      skuEventBus,
-      selectedSku,
-      showHeaderImage = true,
-    } = props;
-
-    const selectedValue = getSkuImgValue(sku, selectedSku);
-    const imgUrl = selectedValue ? selectedValue.imgUrl : goods.picture;
-
-    const previewImage = () => {
-      skuEventBus.$emit('sku:previewImage', selectedValue);
-    };
-
-    return (
-      <div class={[bem(), BORDER_BOTTOM]} >
-        {showHeaderImage && (
-          <Image
-            fit="cover"
-            src={imgUrl}
-            class={bem('img-wrap')}
-            onClick={previewImage}
-          >
-            {slots['sku-header-image-extra']?.()}
-          </Image>
-        )}
-        <div class={bem('goods-info')}>{slots.default?.()}</div>
-      </div>
-    );
+    return ()=>{
+      const {
+        sku,
+        goods,
+        skuEventBus,
+        selectedSku,
+        showHeaderImage = true,
+      } = props;
+  
+      const selectedValue = getSkuImgValue(sku, selectedSku);
+      const imgUrl = selectedValue ? selectedValue.imgUrl : goods.picture;
+    
+  
+      const previewImage = () => {
+        skuEventBus.emit('sku:previewImage', selectedValue);
+      };
+      
+      return (
+        <div class={[bem(), BORDER_BOTTOM]}>
+         
+          {showHeaderImage && (
+            <Image
+              fit="cover"
+              src={imgUrl}
+              class={bem('img-wrap')}
+              onClick={previewImage}
+            >
+              {slots['sku-header-image-extra']?.()}
+            </Image>
+          )}
+          <div class={bem('goods-info')}>{slots.default?.()}</div>
+        </div>
+      );
+    }
+    
   }
 })

@@ -176,7 +176,7 @@
 
 <script>
 import { initialSku, getSkuData } from './data';
-import { LIMIT_TYPE } from '../constants';
+import { LIMIT_TYPE } from '../constants';  
 
 export default {
   i18n: {
@@ -204,7 +204,7 @@ export default {
 
   data() {
     this.skuData = getSkuData();
-    console.log('skuData' ,   this.skuData)
+   
     this.skuData2 = getSkuData(true);
     this.initialSku = initialSku;
 

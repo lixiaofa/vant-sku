@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: 司马老贼
  * @Date: 2023-01-06 11:17:41
- * @LastEditTime: 2023-01-06 12:29:20
+ * @LastEditTime: 2023-01-12 08:57:07
  * @LastEditors: 司马老贼
  */
 import { defineComponent  } from 'vue'
@@ -38,7 +38,7 @@ export default defineComponent({
     onSelect() {
       if (this.disabled) return;
 
-      this.skuEventBus.$emit('sku:propSelect', {
+      this.skuEventBus.emit('sku:propSelect', {
         ...this.skuValue,
         skuKeyStr: this.skuKeyStr,
         multiple: this.multiple,

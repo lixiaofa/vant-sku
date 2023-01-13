@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: 司马老贼
  * @Date: 2022-12-20 10:04:21
- * @LastEditTime: 2023-01-06 15:50:49
+ * @LastEditTime: 2023-01-13 15:50:28
  * @LastEditors: 司马老贼
  */
 import { createApp } from 'vue'
@@ -29,12 +29,16 @@ import 'vant/es/dialog/style'
 import 'vant/es/notify/style'
 import 'vant/es/image-preview/style'
 
-import Sku from '@/components/sku'
-// import '@/components/sku/index.less';
+
+// import Sku from '@/components/sku'
+// console.log('Sku1111' ,  Sku)
+
+
+import "@/components/sku/index.less";
 
 const app = createApp(App)
 
-app.component(Sku.name , Sku)
+// app.component(Sku.name , Sku)
 
 
 app.mount('#app')

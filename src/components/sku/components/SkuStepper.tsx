@@ -4,6 +4,7 @@ import { createNamespace } from 'vant/lib/utils';
 import { LIMIT_TYPE } from '../constants';
 import Stepper from 'vant/lib/stepper';
 
+
 const [name , t] = createNamespace('sku-stepper');
 // const createComponent = namespace[0];
 
@@ -47,7 +48,7 @@ export default defineComponent({
     currentNum(num) {
       const intValue = parseInt(num, 10);
       if (intValue >= this.stepperMinLimit && intValue <= this.stepperLimit) {
-        this.skuEventBus.$emit('sku:numChange', intValue);
+        this.skuEventBus.emit('sku:numChange', intValue);
       }
     },
 
@@ -87,22 +88,22 @@ export default defineComponent({
       return this.startSaleNum < 1 ? 1 : this.startSaleNum;
     },
     quotaText() {
-      const { quotaText, hideQuotaText } = this.customStepperConfig;
-      if (hideQuotaText) return '';
+      const { quotaText, hideQuotaText } = this.customStepperConfig!;
+      if (hideQuotaText) return "";
 
-      let text = '';
+      let text = "";
 
       if (quotaText) {
         text = quotaText;
       } else {
         const textArr = [];
         if (this.startSaleNum > 1) {
-          textArr.push(t('quotaStart', this.startSaleNum));
+          textArr.push(`${this.startSaleNum}件起售`);
         }
         if (this.quota > 0) {
-          textArr.push(t('quotaLimit', this.quota));
+          textArr.push(`限购${this.quota}件`);
         }
-        text = textArr.join(t('comma'));
+        text = textArr.join("，");
       }
 
       return text;
@@ -120,7 +121,7 @@ export default defineComponent({
     },
 
     onOverLimit(action) {
-      this.skuEventBus.$emit('sku:overLimit', {
+      this.skuEventBus.emit('sku:overLimit', {
         action,
         limitType: this.limitType,
         quota: this.quota,
@@ -145,7 +146,7 @@ export default defineComponent({
         this.currentNum = max;
       }
 
-      this.skuEventBus.$emit('sku:stepperState', {
+      this.skuEventBus.emit('sku:stepperState', {
         valid: min <= max,
         min,
         max,
@@ -156,15 +157,16 @@ export default defineComponent({
       });
     },
   },
-
+  
   render() {
+    console.log('quotaText' , this.quotaText)
     return (
       <div class="van-sku-stepper-stock">
         <div class="van-sku__stepper-title">
-          {this.stepperTitle || t('num')}
+          {this.stepperTitle || '购买数量'}
         </div>
         <Stepper
-          vModel={this.currentNum}
+          v-model={this.currentNum}
           integer
           class="van-sku__stepper"
           min={this.stepperMinLimit}
