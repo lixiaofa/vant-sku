@@ -159,7 +159,7 @@ export default defineComponent({
   },
   
   render() {
-    console.log('quotaText' , this.quotaText)
+    
     return (
       <div class="van-sku-stepper-stock">
         <div class="van-sku__stepper-title">

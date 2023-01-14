@@ -147,7 +147,7 @@ export default defineComponent({
       
       
       
-      this.$emit('input', val);
+      this.$emit('update:modelValue', val);
 
       if (!val) {
         this.$emit('sku-close', {
@@ -167,6 +167,7 @@ export default defineComponent({
     },
 
     modelValue(val) {
+    
       this.show = val;
     },
 
@@ -723,13 +724,11 @@ export default defineComponent({
       selectedSkuComb,
     };
     
-    // const slots = (name) => this.slots(name, slotsProps);
+
     const slots = this.$slots;
  
   
-  //   <template v-slot:sku-header-image-extra = 'sku-header-image-extra'>
-  //   {slots['sku-header-image-extra']?.(slotsProps)}
-  // </template>
+
    
     const Header = slots['sku-header']?.(slotsProps) || (
       <SkuHeader
@@ -825,14 +824,7 @@ export default defineComponent({
       />
     );
 
-    // const Messages = slots['sku-messages']?.(slotsProps) || (
-    //   <SkuMessages
-    //     ref="skuMessages"
-    //     goodsId={this.goodsId}
-    //     messageConfig={this.messageConfig}
-    //     messages={sku.messages}
-    //   />
-    // );
+
 
     const Actions = slots['sku-actions']?.(slotsProps) || (
       <SkuActions
