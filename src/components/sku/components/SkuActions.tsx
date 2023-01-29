@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: 司马老贼
  * @Date: 2023-01-06 11:17:41
- * @LastEditTime: 2023-01-13 15:30:10
+ * @LastEditTime: 2023-01-15 09:17:38
  * @LastEditors: 司马老贼
  */
 import { defineComponent  } from 'vue'
@@ -13,9 +13,7 @@ import { createNamespace } from 'vant/lib/utils';
 // Components
 import Button from 'vant/lib/button';
 
-// Types
-// import { DefaultSlots } from '../../utils/types';
-// import Vue, { CreateElement, RenderContext } from 'vue/types';
+
 
 const [name, bem, t] = createNamespace('sku-actions');
 
@@ -34,7 +32,7 @@ export default defineComponent({
     const createEmitter = (name: string) => () => {
       props.skuEventBus.emit(name);
     };
-  
+   
     return ()=>  (
       <div class={bem()} >
         {props.showAddCartBtn && (

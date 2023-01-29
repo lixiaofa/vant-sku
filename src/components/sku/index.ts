@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: 司马老贼
  * @Date: 2023-01-06 11:17:41
- * @LastEditTime: 2023-01-06 11:21:10
+ * @LastEditTime: 2023-01-29 15:29:11
  * @LastEditors: 司马老贼
  */
 // Utils
@@ -35,4 +35,10 @@ import Sku from './Sku';
 // Sku.skuHelper = skuHelper;
 // Sku.skuConstants = constants;
 
-export default Sku;
+// export default Sku;
+export default {
+  install: (app, options) => {
+    // 在这里编写插件代码
+    app.component(Sku.name , Sku)
+  }
+}

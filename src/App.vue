@@ -2,12 +2,12 @@
  * @Description: 
  * @Author: 司马老贼
  * @Date: 2022-12-20 10:04:21
- * @LastEditTime: 2023-01-13 19:39:18
+ * @LastEditTime: 2023-01-29 16:00:52
  * @LastEditors: 司马老贼
 -->
 
 <script lang="ts">
-import Sku from '@/components/sku'
+// import Sku from '@/components/sku'
 import TestStepper from '@/components/test-stepper'
 
 
@@ -38,10 +38,7 @@ export default ({
       largeImageMode: 'Large Image Mode',
     },
   },
-  components: {
-    Sku,
-    TestStepper
-  },
+  
   data() {
     //  this.skuData = getSkuData();
 
@@ -119,8 +116,8 @@ export default ({
         basicUsage
       </van-button>
     </div>
-    <!-- <van-stepper v-model="value" /> -->
-    <TestStepper />
+
+ 
   
    
 

@@ -1,7 +1,7 @@
 import { defineComponent  } from 'vue'
 // Utils
 import { createNamespace } from 'vant/lib/utils';
-import { BORDER_BOTTOM } from '@/utils/constant';
+import { BORDER_BOTTOM } from '../utils/constant';
 // Mixins
 // import { ParentMixin } from '../../mixins/relation';
 // import { BindEventMixin } from '../../mixins/bind-event';

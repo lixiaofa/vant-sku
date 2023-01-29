@@ -2,21 +2,20 @@
  * @Description: 
  * @Author: 司马老贼
  * @Date: 2023-01-06 11:17:41
- * @LastEditTime: 2023-01-12 11:10:29
+ * @LastEditTime: 2023-01-15 09:43:49
  * @LastEditors: 司马老贼
  */
 import { defineComponent , type PropType } from 'vue'
 // Utils
 import { createNamespace } from 'vant/lib/utils';
-// import { inherit } from '../../utils/functional';
-import { BORDER_BOTTOM } from '@/utils/constant';
+
+import { BORDER_BOTTOM } from '../utils/constant';
 
 // Components
 import Image from 'vant/lib/image';
 
 // Types
-// import Vue, { CreateElement, RenderContext } from 'vue/types';
-// import { DefaultSlots, ScopedSlot } from '../../utils/types';
+
 import { SkuData, SkuGoodsData, SelectedSkuData } from '../../../../types/sku';
 
 

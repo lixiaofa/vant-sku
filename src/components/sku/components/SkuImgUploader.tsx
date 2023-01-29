@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: 司马老贼
  * @Date: 2023-01-06 11:17:41
- * @LastEditTime: 2023-01-09 18:34:23
+ * @LastEditTime: 2023-01-15 08:24:09
  * @LastEditors: 司马老贼
  */
 
@@ -15,8 +15,7 @@ import { createNamespace } from 'vant/lib/utils';
 import Uploader from 'vant/lib/uploader';
 
 const [name , t] = createNamespace('sku-img-uploader');
-// const createComponent = namespace[0];
-// const t = namespace[2];
+
 
 export default defineComponent({
   name,

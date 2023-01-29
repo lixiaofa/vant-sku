@@ -14,7 +14,7 @@ import SkuRowPropItem from './components/SkuRowPropItem';
 import SkuStepper from './components/SkuStepper';
 // import SkuMessages from './components/SkuMessages';
 import SkuActions from './components/SkuActions';
-import {  isEmpty } from '@/utils';
+import {  isEmpty } from './utils';
 import {
   isAllSelected,
   isSkuChoosable,
@@ -191,10 +191,7 @@ export default defineComponent({
     },
 
     bodyStyle() {
-      if (this.$isServer) {
-        return;
-      }
-
+      
       const maxHeight = window.innerHeight - this.bodyOffsetTop;
 
       return {
@@ -677,7 +674,7 @@ export default defineComponent({
 
     // 当 popup 完全打开后执行
     onOpened() {
-      console.log('skuRows' , this.skuRows)
+   
       this.centerInitialSku();
     },
 

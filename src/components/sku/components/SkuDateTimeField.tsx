@@ -10,8 +10,7 @@ import DateTimePicker from 'vant/lib/date-picker';
 import Field from 'vant/lib/field';
 
 const [name , t] = createNamespace('sku-datetime-field');
-// const createComponent = namespace[0];
-// const t = namespace[2];
+
 
 export default defineComponent({
   name,
