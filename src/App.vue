@@ -2,15 +2,11 @@
  * @Description: 
  * @Author: 司马老贼
  * @Date: 2022-12-20 10:04:21
- * @LastEditTime: 2023-01-29 16:00:52
+ * @LastEditTime: 2023-02-02 11:36:18
  * @LastEditors: 司马老贼
 -->
 
 <script lang="ts">
-// import Sku from '@/components/sku'
-import TestStepper from '@/components/test-stepper'
-
-
 
 import { getSkuData } from './data';
 import { LIMIT_TYPE } from './constants';
@@ -75,7 +71,7 @@ export default ({
         initialMessages: {
           留言1: '商品留言',
         },
-        uploadImg: (file, img) =>
+        uploadImg: (img) =>
           new Promise((resolve) => {
             setTimeout(() => resolve(img), 1000);
           }),
@@ -107,14 +103,15 @@ export default ({
 
     <div class="sku-container">
      
-      <Sku  v-model="showBase" :sku="skuData.sku" :quota="skuData.quota" :goods="skuData.goods_info"
+      <van-sku  v-model="showBase" :sku="skuData.sku" :quota="skuData.quota" :goods="skuData.goods_info"
         :goods-id="skuData.goods_id" :quota-used="skuData.quota_used" :properties="skuData.properties"
         :hide-stock="skuData.sku.hide_stock" :message-config="messageConfig" :start-sale-num="skuData.start_sale_num"
         :custom-sku-validator="customSkuValidator" disable-stepper-input reset-stepper-on-hide safe-area-inset-bottom
         reset-selected-sku-on-hide @buy-clicked="onBuyClicked" @add-cart="onAddCartClicked" />
-      <van-button block type="primary" @click="showBase = true">
-        basicUsage
-      </van-button>
+      <!-- <van-button block type="primary" @click="showBase = true"> -->
+        <button @click="showBase = true"> basicUsage </button>
+       
+      <!-- </van-button> -->
     </div>
 
  

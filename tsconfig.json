@@ -17,11 +17,13 @@
     "lib": ["esnext", "dom", "dom.iterable", "scripthost"],
     "strictNullChecks": false,
     "experimentalDecorators": true,
-    "noUnusedParameters": true,
-    "noUnusedLocals": true,
+    "noUnusedParameters": false,
+    "noUnusedLocals": false,
     "noImplicitAny": false,
     "skipLibCheck": true,
-    "importsNotUsedAsValues": "preserve"
+    "importsNotUsedAsValues": "preserve",
+
+   
   },
   "include": [
     "src/App.vue",

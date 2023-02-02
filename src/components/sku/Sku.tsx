@@ -12,9 +12,12 @@ import SkuRow from './components/SkuRow';
 import SkuRowItem from './components/SkuRowItem';
 import SkuRowPropItem from './components/SkuRowPropItem';
 import SkuStepper from './components/SkuStepper';
-// import SkuMessages from './components/SkuMessages';
+
 import SkuActions from './components/SkuActions';
 import {  isEmpty } from './utils';
+
+
+
 import {
   isAllSelected,
   isSkuChoosable,
@@ -24,6 +27,11 @@ import {
   getSelectedProperties,
 } from './utils/sku-helper';
 import { LIMIT_TYPE, UNSELECTED_SKU_VALUE_ID } from './constants';
+
+
+//css
+import './index.less'
+
 
 const namespace = createNamespace('sku');
 const [name, bem, t] = namespace;

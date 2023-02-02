@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: 司马老贼
  * @Date: 2022-12-20 10:04:21
- * @LastEditTime: 2023-01-29 17:49:21
+ * @LastEditTime: 2023-02-02 10:58:12
  * @LastEditors: 司马老贼
  */
 import { createApp } from 'vue'
@@ -31,7 +31,7 @@ import 'vant/es/image-preview/style'
 
 
 import Sku from '@/components/sku'
-// console.log('Sku1111' ,  Sku)
+
 
 
 // import "@/components/sku/index.less";

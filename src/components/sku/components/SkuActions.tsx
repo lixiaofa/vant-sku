@@ -15,7 +15,7 @@ import Button from 'vant/lib/button';
 
 
 
-const [name, bem, t] = createNamespace('sku-actions');
+const [name, bem] = createNamespace('sku-actions');
 
 
 

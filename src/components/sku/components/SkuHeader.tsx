@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: 司马老贼
  * @Date: 2023-01-06 11:17:41
- * @LastEditTime: 2023-01-15 09:43:49
+ * @LastEditTime: 2023-02-02 19:42:09
  * @LastEditors: 司马老贼
  */
 import { defineComponent , type PropType } from 'vue'
@@ -16,7 +16,7 @@ import Image from 'vant/lib/image';
 
 // Types
 
-import { SkuData, SkuGoodsData, SelectedSkuData } from '../../../../types/sku';
+import { SkuData,  SelectedSkuData } from '../../../../types/sku';
 
 
 
@@ -38,7 +38,7 @@ function getSkuImgValue(
 
     if (id && item.v) {
       const matchedSku =
-        item.v.filter((skuValue) => skuValue.id === id)[0] || {};
+        item.v.filter((skuValue) => skuValue.id === id)[0] || undefined;
 
       const img =
         matchedSku.previewImgUrl || matchedSku.imgUrl || matchedSku.img_url;
