@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: 司马老贼
  * @Date: 2022-12-20 10:04:21
- * @LastEditTime: 2023-02-02 10:58:12
+ * @LastEditTime: 2023-02-06 09:33:45
  * @LastEditors: 司马老贼
  */
 import { createApp } from 'vue'
@@ -30,17 +30,11 @@ import 'vant/es/notify/style'
 import 'vant/es/image-preview/style'
 
 
-import Sku from '@/components/sku'
-
-
-
-// import "@/components/sku/index.less";
 
 const app = createApp(App)
 
 
-    
-app.use(Sku)
+
 
 app.mount('#app')
 

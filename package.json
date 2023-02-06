@@ -1,8 +1,19 @@
 {
-  "name": "vant-sku-next",
-  "version": "1.2.0",
+  "name": "vant-sku",
+  "version": "1.0.0",
+
   "packageManager": "pnpm@7.14.0",
-  "description": "template for Vue3 Vant Mobile",
+  "description": "vant sku",
+  "type": "module",
+  "files": ["dist"],
+  "main": "./dist/vant-sku.umd.cjs",
+  "module": "./dist/vant-sku.js",
+  "exports": {
+    ".": {
+      "import": "./dist/vant-sku.js",
+      "require": "./dist/vant-sku.umd.cjs"
+    }
+  },
   "license": "MIT",
   "scripts": {
     "dev": "cross-env MOCK_SERVER_PORT=8086 vite",

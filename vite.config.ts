@@ -9,8 +9,9 @@ import Components from 'unplugin-vue-components/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import { VantResolver } from 'unplugin-vue-components/resolvers'
 
+
 import vue from '@vitejs/plugin-vue'
-import legacy from '@vitejs/plugin-legacy'
+
 import vueJsx from '@vitejs/plugin-vue-jsx'
 
 import px2vw from '@yuo/postcss-px2vw'
@@ -22,7 +23,8 @@ import { viteVConsole } from 'vite-plugin-vconsole'
 export default ({ command, mode }: ConfigEnv): UserConfig => {
   const root = process.cwd()
   const env = loadEnv(mode, root)
-  console.log('env' , env)
+
+ 
 
   return {
     base: env.VITE_APP_PUBLIC_PATH,
@@ -37,10 +39,10 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
       vueJsx(),
       visualizer(),
 
-      legacy({
-        targets: ['defaults', 'not IE 11'],
+      Components({
+        resolvers: [VantResolver()],
       }),
-
+    
      
       AutoImport({
         include: [
@@ -83,18 +85,21 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
     build: {
       cssCodeSplit: false,
       chunkSizeWarningLimit: 2048,
+     
       lib: {
+        
         // Could also be a dictionary or array of multiple entry points
         entry: path.resolve(__dirname, 'src/components/sku/index.ts'),
-        name: 'vant-sku-next',
+        name: 'vant-sku',
         // the proper extensions will be added
-        fileName: (format) => `vant-sku-next.${format}.js`,
+        fileName: (format) => `vant-sku.${format}.js`,
       },
       rollupOptions: {
         // 确保外部化处理那些你不想打包进库的依赖
         external: ['vue' , 'vant'],
         output: {
           // 在 UMD 构建模式下为这些外部化的依赖提供一个全局变量
+          assetFileNames: 'index.[ext]',
           globals: {
             vue: 'Vue',
           },

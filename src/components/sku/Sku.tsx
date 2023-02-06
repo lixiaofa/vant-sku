@@ -2,7 +2,7 @@ import { defineComponent } from 'vue'
 import {createNamespace} from 'vant/lib/utils'
 // const Emitter = require('tiny-emitter');
 import emitter from 'tiny-emitter/instance'
-// import Vue from 'vue';
+
 import Popup from 'vant/lib/popup';
 import {showToast}  from "vant/lib/toast";
 import {showImagePreview } from 'vant/lib/image-preview';
@@ -16,7 +16,7 @@ import SkuStepper from './components/SkuStepper';
 import SkuActions from './components/SkuActions';
 import {  isEmpty } from './utils';
 
-
+import './index.less'
 
 import {
   isAllSelected,
@@ -29,8 +29,7 @@ import {
 import { LIMIT_TYPE, UNSELECTED_SKU_VALUE_ID } from './constants';
 
 
-//css
-import './index.less'
+
 
 
 const namespace = createNamespace('sku');
