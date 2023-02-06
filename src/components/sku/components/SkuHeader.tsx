@@ -2,10 +2,11 @@
  * @Description: 
  * @Author: 司马老贼
  * @Date: 2023-01-06 11:17:41
- * @LastEditTime: 2023-02-02 19:42:09
+ * @LastEditTime: 2023-02-06 17:38:05
  * @LastEditors: 司马老贼
  */
-import { defineComponent , type PropType } from 'vue'
+// , type PropType 
+import { defineComponent } from 'vue'
 // Utils
 import { createNamespace } from 'vant/lib/utils';
 
@@ -16,7 +17,7 @@ import Image from 'vant/lib/image';
 
 // Types
 
-import { SkuData,  SelectedSkuData } from '../../../../types/sku';
+// import { SkuData,  SelectedSkuData } from './../types/sku';
 
 
 
@@ -26,10 +27,11 @@ type SelectedValueType = {
 };
 
 const [name, bem] = createNamespace('sku-header');
-
+// sku: SkuData,
+// selectedSku: SelectedSkuData
 function getSkuImgValue(
-  sku: SkuData,
-  selectedSku: SelectedSkuData
+  sku: any,
+  selectedSku: any
 ): SelectedValueType | undefined {
   let imgValue;
 
@@ -58,12 +60,12 @@ function getSkuImgValue(
   return imgValue;
 }
 
-
+// as  PropType<SkuData>
 export default defineComponent({
   name,
   // 启用了类型推导
   props:  {
-    sku: Object as  PropType<SkuData>,
+    sku: Object ,
     goods: Object,
     skuEventBus: Object,
     selectedSku: Object,
