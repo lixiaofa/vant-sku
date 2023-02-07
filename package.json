@@ -1,11 +1,12 @@
 {
   "name": "vant-sku",
   "version": "1.0.0",
-
   "packageManager": "pnpm@7.14.0",
   "description": "vant sku",
   "type": "module",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "main": "./dist/vant-sku.umd.cjs",
   "module": "./dist/vant-sku.js",
   "exports": {
@@ -26,22 +27,9 @@
     "plop": "plop"
   },
   "dependencies": {
-    "@vant/touch-emulator": "^1.4.0",
-    "@vant/use": "^1.4.3",
-    "axios": "^1.2.1",
-    "echarts": "^5.4.1",
-    "lodash-es": "^4.17.21",
-    "nprogress": "^0.2.0",
-    "path-browserify": "^1.0.1",
-    "pinia": "^2.0.28",
-    "pinia-plugin-persistedstate": "^3.0.1",
-    "resize-detector": "^0.3.0",
-    "store": "^2.0.12",
     "tiny-emitter": "^2.1.0",
     "vant": "^4.0.2",
-    "vconsole": "^3.15.0",
-    "vue": "^3.2.45",
-    "vue-router": "^4.1.6"
+    "vue": "^3.2.45"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.33.1",

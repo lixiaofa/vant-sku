@@ -2,12 +2,7 @@
 
 ### 引入
 
-```js
-import Vue from 'vue';
-import { Sku } from 'vant';
 
-Vue.use(Sku);
-```
 
 ## 代码演示
 

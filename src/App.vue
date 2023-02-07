@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: 司马老贼
  * @Date: 2023-01-06 10:00:57
- * @LastEditTime: 2023-02-06 17:45:56
+ * @LastEditTime: 2023-02-07 13:08:05
  * @LastEditors: 司马老贼
 -->
 <template>
@@ -35,12 +35,12 @@
 </template>
 
 <script setup lang="ts">
-import { ref , reactive} from 'vue';
+
 import { showToast } from 'vant';
 import 'vant/es/toast/style';
 
-// import VanSku from './components/sku'
-import VanSku from '../dist/vant-sku.es'
+import VanSku from './components/sku'
+// import VanSku from '../dist/vant-sku.es'
 
 
 

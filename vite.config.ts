@@ -17,8 +17,7 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 import px2vw from '@yuo/postcss-px2vw'
 import autoprefixer from 'autoprefixer'
 
-import { viteVConsole } from 'vite-plugin-vconsole'
-// import mock from './build/mock/createMockServer'
+
 
 export default ({ command, mode }: ConfigEnv): UserConfig => {
   const root = process.cwd()
@@ -52,21 +51,13 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
         ],
         imports: [
           'vue',
-          'vue-router',
+        
          
         ],
         dts: true,
       }),
 
-      viteVConsole({
-        entry: [path.resolve('src/main.ts')],
-        localEnabled: command === 'serve',
-        enabled: false,
-        config: {
-          maxLogNumber: 1000,
-          theme: 'light',
-        },
-      }),
+    
 
     
     ],
@@ -102,6 +93,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
           assetFileNames: 'index.[ext]',
           globals: {
             vue: 'Vue',
+            vant: 'vant'
           },
         },
       },

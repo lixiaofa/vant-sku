@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: 司马老贼
  * @Date: 2022-12-20 10:04:21
- * @LastEditTime: 2023-02-06 09:33:45
+ * @LastEditTime: 2023-02-07 18:19:40
  * @LastEditors: 司马老贼
  */
 import { createApp } from 'vue'
@@ -15,8 +15,6 @@ import App from './App.vue'
 
 import './app.less'
 
-// Vant 桌面端适配
-import '@vant/touch-emulator'
 
 /* --------------------------------
 Vant 中有个别组件是以函数的形式提供的，

@@ -2,12 +2,6 @@
 
 ### Install
 
-```js
-import Vue from 'vue';
-import { Sku } from 'vant';
-
-Vue.use(Sku);
-```
 
 ## Usage
 
