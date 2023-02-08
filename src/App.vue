@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: 司马老贼
  * @Date: 2023-01-06 10:00:57
- * @LastEditTime: 2023-02-07 13:08:05
+ * @LastEditTime: 2023-02-08 11:58:11
  * @LastEditors: 司马老贼
 -->
 <template>
@@ -39,8 +39,8 @@
 import { showToast } from 'vant';
 import 'vant/es/toast/style';
 
-import VanSku from './components/sku'
-// import VanSku from '../dist/vant-sku.es'
+// import VanSku from './components/sku'
+import VanSku from '../dist/vant-sku.es'
 
 
 

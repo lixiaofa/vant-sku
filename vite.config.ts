@@ -1,7 +1,8 @@
 import path from 'path'
 
 
-import { loadEnv } from 'vite'
+import { loadEnv   } from 'vite'
+import fixVue3NoMatchingExportDefaultPlugin from './plugins/fixVue3NoMatchingExportDefaultPlugin'
 import type { ConfigEnv, UserConfig } from 'vite'
 
 import { visualizer } from 'rollup-plugin-visualizer'
@@ -22,9 +23,6 @@ import autoprefixer from 'autoprefixer'
 export default ({ command, mode }: ConfigEnv): UserConfig => {
   const root = process.cwd()
   const env = loadEnv(mode, root)
-
- 
-
   return {
     base: env.VITE_APP_PUBLIC_PATH,
 
@@ -56,6 +54,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
         ],
         dts: true,
       }),
+      // fixVue3NoMatchingExportDefaultPlugin({})
 
     
 
@@ -83,6 +82,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
         entry: path.resolve(__dirname, 'src/components/sku/index.ts'),
         name: 'vant-sku',
         // the proper extensions will be added
+        formats: ['es', 'cjs', 'umd'],
         fileName: (format) => `vant-sku.${format}.js`,
       },
       rollupOptions: {

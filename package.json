@@ -27,6 +27,7 @@
     "plop": "plop"
   },
   "dependencies": {
+    "lodash": "^4.17.21",
     "tiny-emitter": "^2.1.0",
     "vant": "^4.0.2",
     "vue": "^3.2.45"
