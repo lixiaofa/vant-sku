@@ -8,10 +8,10 @@
     "dist"
   ],
   "main": "./dist/vant-sku.umd.cjs",
-  "module": "./dist/vant-sku.js",
+  "module": "./dist/vant-sku.es.js",
   "exports": {
     ".": {
-      "import": "./dist/vant-sku.js",
+      "import": "./dist/vant-sku.es.js",
       "require": "./dist/vant-sku.umd.cjs"
     }
   },
@@ -46,6 +46,7 @@
     "lodash": "^4.17.21",
     "tiny-emitter": "^2.1.0",
     "vant": "^4.0.2",
+    "vant-sku": "^1.0.1",
     "vue": "^3.2.45"
   },
   "devDependencies": {
