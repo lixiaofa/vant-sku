@@ -1,6 +1,6 @@
 {
   "name": "vant-sku",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "packageManager": "pnpm@7.14.0",
   "description": "migration from vant sku",
   "type": "module",
