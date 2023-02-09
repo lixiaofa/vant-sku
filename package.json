@@ -2,7 +2,7 @@
   "name": "vant-sku",
   "version": "1.0.0",
   "packageManager": "pnpm@7.14.0",
-  "description": "vant sku",
+  "description": "migration from vant sku",
   "type": "module",
   "files": [
     "dist"
@@ -26,6 +26,22 @@
     "test": "vitest",
     "plop": "plop"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lixiaofa/vant-sku.git",
+    "directory": ""
+  },
+  "bugs": "https://github.com/lixiaofa/vant-sku/issues",
+  "author": "faxiaoli",
+  "keywords": [
+    "ui",
+    "vue",
+    "vue3",
+    "mobile",
+    "frontend",
+    "component"
+  ],
+  "homepage": "https://github.com/lixiaofa/vant-sku",
   "dependencies": {
     "lodash": "^4.17.21",
     "tiny-emitter": "^2.1.0",
