@@ -8,7 +8,7 @@
 
 import { defineComponent } from 'vue'
 // Utils
-import { createNamespace } from 'vant/lib/utils';
+import { createNamespace } from 'vant/es/utils';
 
 
 // Types

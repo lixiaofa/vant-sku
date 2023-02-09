@@ -9,10 +9,10 @@
 import { defineComponent  } from 'vue'
 
 // Utils
-import { createNamespace } from 'vant/lib/utils';
+import { createNamespace } from 'vant/es/utils';
 
 // Components
-import Uploader from 'vant/lib/uploader';
+import Uploader from 'vant/es/uploader';
 
 const [name , t] = createNamespace('sku-img-uploader');
 

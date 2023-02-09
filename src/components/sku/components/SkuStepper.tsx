@@ -1,8 +1,8 @@
 import { defineComponent  } from 'vue'
 
-import { createNamespace } from 'vant/lib/utils';
+import { createNamespace } from 'vant/es/utils';
 import { LIMIT_TYPE } from '../constants';
-import Stepper from 'vant/lib/stepper';
+import Stepper from 'vant/es/stepper';
 
 
 const [name , t] = createNamespace('sku-stepper');

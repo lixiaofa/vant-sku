@@ -1,11 +1,11 @@
 import { defineComponent} from 'vue'
 
 import { bem } from './SkuRow';
-import { createNamespace } from 'vant/lib/utils';
+import { createNamespace } from 'vant/es/utils';
 import { isSkuChoosable } from '../utils/sku-helper';
 // import { ChildrenMixin } from '../../mixins/relation';
-import Icon from 'vant/lib/icon';
-import Image from 'vant/lib/image';
+import Icon from 'vant/es/icon';
+import Image from 'vant/es/image';
 
 const [name] = createNamespace('sku-row-item');
 // mixins: [ChildrenMixin('vanSkuRows')],

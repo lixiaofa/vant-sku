@@ -1,11 +1,11 @@
 import { defineComponent } from 'vue'
-import {createNamespace} from 'vant/lib/utils'
+import {createNamespace} from 'vant/es/utils'
 // const Emitter = require('tiny-emitter');
 import emitter from 'tiny-emitter/instance'
 
-import Popup from 'vant/lib/popup';
-import {showToast}  from "vant/lib/toast";
-import {showImagePreview } from 'vant/lib/image-preview';
+import Popup from 'vant/es/popup';
+import {showToast}  from "vant/es/toast";
+import {showImagePreview } from 'vant/es/image-preview';
 import SkuHeader from '@/components/sku/components/SkuHeader';
 import SkuHeaderItem from './components/SkuHeaderItem';
 import SkuRow from './components/SkuRow';
@@ -16,7 +16,7 @@ import SkuStepper from './components/SkuStepper';
 import SkuActions from './components/SkuActions';
 import {  isEmpty } from './utils';
 
-import './index.less'
+
 
 import {
   isAllSelected,

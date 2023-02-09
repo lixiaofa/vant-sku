@@ -2,16 +2,16 @@
  * @Description: 
  * @Author: 司马老贼
  * @Date: 2023-01-06 11:17:41
- * @LastEditTime: 2023-01-15 09:17:38
+ * @LastEditTime: 2023-02-09 11:25:46
  * @LastEditors: 司马老贼
  */
 import { defineComponent  } from 'vue'
 // Utils
-import { createNamespace } from 'vant/lib/utils';
+import { createNamespace } from 'vant/es/utils';
 
 
 // Components
-import Button from 'vant/lib/button';
+import Button from 'vant/es/button';
 
 
 

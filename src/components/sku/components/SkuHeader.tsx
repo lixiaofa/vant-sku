@@ -8,12 +8,12 @@
 // , type PropType 
 import { defineComponent } from 'vue'
 // Utils
-import { createNamespace } from 'vant/lib/utils';
+import { createNamespace } from 'vant/es/utils';
 
 import { BORDER_BOTTOM } from '../utils/constant';
 
 // Components
-import Image from 'vant/lib/image';
+import Image from 'vant/es/image';
 
 // Types
 

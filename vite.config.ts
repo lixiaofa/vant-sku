@@ -2,7 +2,7 @@ import path from 'path'
 
 
 import { loadEnv   } from 'vite'
-import fixVue3NoMatchingExportDefaultPlugin from './plugins/fixVue3NoMatchingExportDefaultPlugin'
+
 import type { ConfigEnv, UserConfig } from 'vite'
 
 import { visualizer } from 'rollup-plugin-visualizer'
@@ -54,7 +54,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
         ],
         dts: true,
       }),
-      // fixVue3NoMatchingExportDefaultPlugin({})
+
 
     
 
