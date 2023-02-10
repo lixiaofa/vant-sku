@@ -1,6 +1,6 @@
 {
   "name": "vant-sku",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "packageManager": "pnpm@7.14.0",
   "description": "migration from vant sku",
   "type": "module",
@@ -15,7 +15,6 @@
       "require": "./dist/vant-sku.umd.cjs"
     },
     "./dist/css": "./dist/css/index.css"
-    
   },
   "license": "MIT",
   "scripts": {
