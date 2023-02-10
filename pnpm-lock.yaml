@@ -37,7 +37,7 @@ specifiers:
   unplugin-auto-import: ^0.12.0
   unplugin-vue-components: ^0.22.11
   vant: ^4.0.2
-  vant-sku: ^1.0.2
+  vant-sku: ^1.0.4
   vite: ^4.0.0
   vite-plugin-vconsole: ^1.2.2
   vitest: ^0.25.6
@@ -48,7 +48,7 @@ dependencies:
   lodash: 4.17.21
   tiny-emitter: 2.1.0
   vant: 4.0.10_vue@3.2.47
-  vant-sku: 1.0.2
+  vant-sku: 1.0.4
   vue: 3.2.47
 
 devDependencies:
@@ -6447,8 +6447,8 @@ packages:
       spdx-expression-parse: 3.0.1
     dev: true
 
-  /vant-sku/1.0.2:
-    resolution: {integrity: sha512-KXTvxuWa/RCpL/Lv3FPSdVyX1MMR6fxzlTF8jWCh2xv4G9/W8qASqT54Df3ye2CkkuH1oG/GT3txBJ3oeqbe9A==}
+  /vant-sku/1.0.4:
+    resolution: {integrity: sha512-7hBwB6gaY3v9Wxzyc/jjyf4omarbQoOtnWElgqcMmTUmH2P6tVvADmZ9esUTPncF4ZMTwsB+/3h2cAnqNWTwjw==}
     dependencies:
       lodash: 4.17.21
       tiny-emitter: 2.1.0
