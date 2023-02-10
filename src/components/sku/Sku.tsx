@@ -132,7 +132,12 @@ export default defineComponent({
            'input' , 
            'sku-close' , 
            'sku-selected' , 
-           'sku-reset'
+           'sku-reset',
+           'open-preview',
+           'close-preview',
+           'stepper-change',
+           'add-cart',
+            'buy-clicked'
           ],
 
 
@@ -848,7 +853,7 @@ export default defineComponent({
         closeable
         position="bottom"
         class="van-sku-container"
-        getContainer={this.getContainer}
+        teleport={this.getContainer}
         closeOnClickOverlay={this.closeOnClickOverlay}
         safeAreaInsetBottom={this.safeAreaInsetBottom}
         onOpened={this.onOpened}

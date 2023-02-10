@@ -1,11 +1,33 @@
-# Sku
+# Sku 商品规格
 
-### Install
+tip: 删除了messageConfig
 
 
-## Usage
+### 全局注册组件
+```js
 
-### Basic Usage
+import { createApp } from 'vue';
+import VanSku from 'vant-sku';
+
+const app = createApp();
+app.use(VanSku);
+
+```
+
+### 按需引入
+
+
+```js
+import VanSku from 'vant-sku';
+import 'vant-sku/dist/index.css'
+
+
+```
+
+
+## 代码演示
+
+### 基础用法
 
 ```html
 <van-sku
@@ -13,32 +35,35 @@
   :sku="sku"
   :goods="goods"
   :goods-id="goodsId"
-  :hide-stock="sku.hide_stock"
   :quota="quota"
   :quota-used="quotaUsed"
-  :reset-stepper-on-hide="resetStepperOnHide"
-  :reset-selected-sku-on-hide="resetSelectedSkuOnHide"
-  :disable-stepper-input="disableStepperInput"
-  :message-config="messageConfig"
+  :hide-stock="sku.hide_stock"
+ 
   @buy-clicked="onBuyClicked"
   @add-cart="onAddCartClicked"
 />
 ```
 
 ```js
+import { ref } from 'vue';
+
 export default {
-  data() {
-    return {
-      show: false,
-      sku: {},
-      goods: {},
-      messageConfig: {},
+  setup() {
+    const show = ref(false);
+    return { 
+      show,
+       sku: {
+        // 数据结构见下方文档
+      },
+      goods: {
+        // 数据结构见下方文档
+      },
     };
   },
 };
 ```
 
-### Custom Stepper
+### 自定义步进器
 
 ```html
 <van-sku
@@ -46,34 +71,34 @@ export default {
   :sku="sku"
   :goods="goods"
   :goods-id="goodsId"
-  :hide-stock="sku.hide_stock"
   :quota="quota"
   :quota-used="quotaUsed"
+  :hide-stock="sku.hide_stock"
   :custom-stepper-config="customStepperConfig"
   @buy-clicked="onBuyClicked"
   @add-cart="onAddCartClicked"
 />
 ```
 
-### Custom By Slot
+### 通过插槽定制
 
 ```html
 <van-sku
   v-model="show"
-  stepper-title="Stepper title"
+  stepper-title="我要买"
   :sku="sku"
   :goods="goods"
   :goods-id="goodsId"
-  :hide-stock="sku.hide_stock"
   :quota="quota"
   :quota-used="quotaUsed"
+  :hide-stock="sku.hide_stock"
   show-add-cart-btn
   reset-stepper-on-hide
   :initial-sku="initialSku"
   @buy-clicked="onBuyClicked"
   @add-cart="onAddCartClicked"
 >
-  <!-- custom sku-header-price -->
+  <!-- 自定义 sku-header-price -->
   <template #sku-header-price="props">
     <div class="van-sku__goods-price">
       <span class="van-sku__price-symbol">￥</span
@@ -81,20 +106,20 @@ export default {
     </div>
   </template>
 
-  <!-- custom sku actions -->
+  <!-- 自定义 sku actions -->
   <template #sku-actions="props">
     <div class="van-sku-actions">
       <van-button square size="large" type="warning" @click="onPointClicked">
-        Button
+        积分兑换
       </van-button>
-      <!-- trigger sku inner event -->
+      <!-- 直接触发 sku 内部事件，通过内部事件执行 onBuyClicked 回调 -->
       <van-button
         square
         size="large"
         type="danger"
         @click="props.skuEventBus.$emit('sku:buy')"
       >
-        Button
+        买买买
       </van-button>
     </div>
   </template>
@@ -105,167 +130,157 @@ export default {
 
 ### Props
 
-| Attribute | Description | Type | Default |
+| 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| v-model | Whether to show sku | _boolean_ | `false` |
-| sku | Sku data | _object_ | - |
-| goods | Goods info | _object_ | - |
-| goods-id | Goods id | `string | _number_ | - |
-| price-tag | Tag behind the price | _string_ | - |
-| hide-stock | Whether to hide stock | _boolean_ | `false` |
-| hide-quota-text | Whether to hide quota text | _boolean_ | `false` |
-| hide-selected-text | Whether to hide selected text | _boolean_ | `false` |
-| stock-threshold | stock threshold | _boolean_ | `50` |
-| show-add-cart-btn | Whether to show cart button | _boolean_ | `true` |
-| buy-text | Buy button text | _string_ | - | - |
-| add-cart-text | Add cart button text | _string_ | - | - |
-| quota | Quota (0 as no limit) | _number_ | `0` |
-| quota-used | Used quota | _number_ | `0` |
-| reset-stepper-on-hide | Whether to reset stepper when hide | _boolean_ | `false` |
-| reset-selected-sku-on-hide | Whether to reset selected sku when hide | _boolean_ | `false` |
-| disable-stepper-input | Whether to disable stepper input | _boolean_ | `false` |
-| close-on-click-overlay | Whether to close sku popup when overlay is clicked | _boolean_ | `true` |
-| stepper-title | Quantity title | _string_ | `Quantity` |
-| custom-stepper-config | Custom stepper related config | _object_ | `{}` |
-| message-config | Message related config | _object_ | `{}` |
-| disable-soldout-sku `v2.11.3` | Whether to disable soldout sku | _boolean_ | `true` |
-| get-container | Return the mount node for sku | _string \| () => Element_ | - |
-| safe-area-inset-bottom | Whether to enable bottom safe area adaptation | _boolean_ | `true` |
-| start-sale-num | Minimum quantity | _number_ | `1` |
-| properties | Goods properties | _array_ | - |
-| preview-on-click-image `v2.5.2` | Whether to preview image when click goods image | _boolean_ | `true` |
-| show-header-image `v2.9.0` | Whether to display header image | _boolean_ | `true` |
-| lazy-load | Whether to enable lazy load，should register [Lazyload](#/en-US/lazyload) component | _boolean_ | `false` |
+| v-model | 是否显示商品规格弹窗 | _boolean_ | `false` |
+| sku | 商品 sku 数据 | _object_ | - |
+| goods | 商品信息 | _object_ | - |
+| goods-id | 商品 id | _number \| string_ | - |
+| price-tag | 显示在价格后面的标签 | _string_ | - |
+| hide-stock | 是否显示商品剩余库存 | _boolean_ | `false` |
+| hide-quota-text | 是否显示限购提示 | _boolean_ | `false` |
+| hide-selected-text | 是否隐藏已选提示 | _boolean_ | `false` |
+| stock-threshold | 库存阈值。低于这个值会把库存数高亮显示 | _boolean_ | `50` |
+| show-add-cart-btn | 是否显示加入购物车按钮 | _boolean_ | `true` |
+| buy-text | 购买按钮文字 | _string_ | `立即购买` |
+| add-cart-text | 加入购物车按钮文字 | _string_ | `加入购物车` |
+| quota | 限购数，0 表示不限购 | _number_ | `0` |
+| quota-used | 已经购买过的数量 | _number_ | `0` |
+| reset-stepper-on-hide | 隐藏时重置选择的商品数量 | _boolean_ | `false` |
+| reset-selected-sku-on-hide | 隐藏时重置已选择的 sku | _boolean_ | `false` |
+| disable-stepper-input | 是否禁用步进器输入 | _boolean_ | `false` |
+| close-on-click-overlay | 是否在点击遮罩层后关闭 | _boolean_ | `true` |
+| stepper-title | 数量选择组件左侧文案 | _string_ | `购买数量` |
+| custom-stepper-config | 步进器相关自定义配置 | _object_ | `{}` |
+| message-config | 留言相关配置 | _object_ | `{}` |
+| get-container | 指定挂载的节点，[用法示例](#/zh-CN/popup#zhi-ding-gua-zai-wei-zhi) | _string \| () => Element_ | - |
+| initial-sku | 默认选中的 sku，具体参考高级用法 | _object_ | `{}` |
+| show-soldout-sku | 是否展示售罄的 sku，默认展示并置灰 | _boolean_ | `true` |
+| disable-soldout-sku `v2.11.3` | 是否禁用售罄的 sku | _boolean_ | `true` |
+| safe-area-inset-bottom | 是否开启[底部安全区适配](#/zh-CN/advanced-usage#di-bu-an-quan-qu-gua-pei) | _boolean_ | `true` |
+| start-sale-num | 起售数量 | _number_ | `1` |
+| properties | 商品属性 | _array_ | - |
+| preview-on-click-image `v2.5.2` | 是否在点击商品图片时自动预览 | _boolean_ | `true` |
+| show-header-image `v2.9.0` | 是否展示头部图片 | _boolean_ | `true` |
+| lazy-load `v2.9.0` | 是否开启图片懒加载，须配合 [Lazyload](#/zh-CN/lazyload) 组件使用 | _boolean_ | `false` |
 
 ### Events
 
-| Event | Description | Arguments |
+| 事件名 | 说明 | 回调参数 |
 | --- | --- | --- |
-| add-cart | Emitted when click cart button | data: object |
-| buy-clicked | Emitted when click buy button | data: object |
-| stepper-change | Emitted when stepper value changed | value: number |
-| sku-selected | Emitted when select sku | { skuValue, selectedSku, selectedSkuComb } |
-| sku-prop-selected | Emitted when select property | { propValue, selectedProp, selectedSkuComb } |
-| open-preview | Emitted when open image preview | data: object |
-| close-preview | Emitted when close image preview | data: object |
-| sku-reset `v2.8.1` | Emitted when reset sku and property | { selectedSku, selectedProp, selectedSkuComb } |
+| add-cart | 点击添加购物车回调 | skuData: object |
+| buy-clicked | 点击购买回调 | skuData: object |
+| stepper-change | 购买数量变化时触发 | value: number |
+| sku-selected | 切换规格类目时触发 | { skuValue, selectedSku, selectedSkuComb } |
+| sku-prop-selected | 切换商品属性时触发 | { propValue, selectedProp, selectedSkuComb } |
+| open-preview | 打开商品图片预览时触发 | data: object |
+| close-preview | 关闭商品图片预览时触发 | data: object |
+| sku-reset `v2.8.1` | 规格和属性被重置时触发 | { selectedSku, selectedProp, selectedSkuComb } |
 
-### Methods
+### 方法
 
-Use [ref](https://vuejs.org/v2/api/#ref) to get Sku instance and call instance methods.
+通过 ref 可以获取到 Sku 实例并调用实例方法，详见[组件实例方法](#/zh-CN/advanced-usage#zu-jian-shi-li-fang-fa)。
 
-| Name | Description | Attribute | Return value |
-| --- | --- | --- | --- |
-| getSkuData | Get current skuData | - | skuData |
-| resetSelectedSku | Reset selected sku to initial sku | - | - |
+| 方法名           | 说明                   | 参数 | 返回值  |
+| ---------------- | ---------------------- | ---- | ------- |
+| getSkuData       | 获取当前 skuData       | -    | skuData |
+| resetSelectedSku | 重置选中规格到初始状态 | -    | -       |
 
 ### Slots
 
-| Name                            | Description                       |
-| ------------------------------- | --------------------------------- |
-| sku-header                      | Custom header                     |
-| sku-header-price                | Custom header price area          |
-| sku-header-origin-price         | Custom header origin price area   |
-| sku-header-extra                | Extra header area                 |
-| sku-header-image-extra `v2.5.2` | Custom header image extra area    |
-| sku-body-top                    | Custom content before sku-group   |
-| sku-group                       | Custom sku                        |
-| extra-sku-group                 | Extra custom content              |
-| sku-stepper                     | Custom stepper                    |
-| sku-messages                    | Custom messages                   |
-| sku-actions-top                 | Custom content before sku-actions |
-| sku-actions                     | Custom button actions             |
+Sku 组件默认划分好了若干区块，这些区块都定义成了插槽，可以按需进行替换。区块顺序见下表：
 
-### Sku Data Structure
+| 名称 | 说明 |
+| --- | --- |
+| sku-header | 商品信息展示区，包含商品图片、名称、价格等信息 |
+| sku-header-price | 自定义 sku 头部价格展示 |
+| sku-header-origin-price | 自定义 sku 头部原价展示 |
+| sku-header-extra | 额外 sku 头部区域 |
+| sku-header-image-extra `v2.5.2` | 自定义 sku 头部图片额外的展示 |
+| sku-body-top | sku 展示区上方的内容，无默认展示内容，按需使用 |
+| sku-group | 商品 sku 展示区 |
+| extra-sku-group | 额外商品 sku 展示区，一般用不到 |
+| sku-stepper | 商品数量选择区 |
+| sku-messages | 商品留言区 |
+| sku-actions-top | 操作按钮区顶部内容，无默认展示内容，按需使用 |
+| sku-actions | 操作按钮区 |
+
+### sku 对象结构
 
 ```js
 sku: {
+  // 所有sku规格类目与其值的从属关系，比如商品有颜色和尺码两大类规格，颜色下面又有红色和蓝色两个规格值。
+  // 可以理解为一个商品可以有多个规格类目，一个规格类目下可以有多个规格值。
   tree: [
     {
-      k: 'Color',
-      k_s: 's1',
+      k: '颜色', // skuKeyName：规格类目名称
+      k_s: 's1', // skuKeyStr：sku 组合列表（下方 list）中当前类目对应的 key 值，value 值会是从属于当前类目的一个规格值 id
       v: [
         {
-          id: '1',
-          name: 'Red',
-          imgUrl: 'https://img01.yzcdn.cn/1.jpg',
-          previewImgUrl: 'https://img01.yzcdn.cn/1p.jpg',
+          id: '1', // skuValueId：规格值 id
+          name: '红色', // skuValueName：规格值名称
+          imgUrl: 'https://img01.yzcdn.cn/1.jpg', // 规格类目图片，只有第一个规格类目可以定义图片
+          previewImgUrl: 'https://img01.yzcdn.cn/1p.jpg', // 用于预览显示的规格类目图片
         },
         {
           id: '1',
-          name: 'Blue',
+          name: '蓝色',
           imgUrl: 'https://img01.yzcdn.cn/2.jpg',
           previewImgUrl: 'https://img01.yzcdn.cn/2p.jpg',
         }
       ],
-      largeImageMode: true, //  whether to enable large image mode
+      largeImageMode: true, //  是否展示大图模式
     }
   ],
+  // 所有 sku 的组合列表，比如红色、M 码为一个 sku 组合，红色、S 码为另一个组合
   list: [
     {
-      id: 2259,
-      s1: '1',
-      s2: '1',
-      price: 100,
-      stock_num: 110
+      id: 2259, // skuId
+      s1: '1', // 规格类目 k_s 为 s1 的对应规格值 id
+      s2: '1', // 规格类目 k_s 为 s2 的对应规格值 id
+      price: 100, // 价格（单位分）
+      stock_num: 110 // 当前 sku 组合对应的库存
     }
   ],
-  price: '1.00',
-  stock_num: 227,
-  collection_id: 2261,
-  none_sku: false,
+  price: '1.00', // 默认价格（单位元）
+  stock_num: 227, // 商品总库存
+  collection_id: 2261, // 无规格商品 skuId 取 collection_id，否则取所选 sku 组合对应的 id
+  none_sku: false, // 是否无规格商品
   messages: [
     {
-      datetime: '0',
-      multiple: '0',
-      name: 'Message',
-      type: 'text',
-      required: '1'，
-      placeholder: '',
-      extraDesc: ''
+      // 商品留言
+      datetime: '0', // 留言类型为 time 时，是否含日期。'1' 表示包含
+      multiple: '0', // 留言类型为 text 时，是否多行文本。'1' 表示多行
+      name: '留言', // 留言名称
+      type: 'text', // 留言类型，可选: id_no（身份证）, text, tel, date, time, email
+      required: '1', // 是否必填 '1' 表示必填
+      placeholder: '', // 可选值，占位文本
+      extraDesc: ''  // 可选值，附加描述文案
     }
   ],
-  hide_stock: false,
-  properties: [
-    {
-      k_id: 123,
-      k: 'More',
-      is_multiple: true,
-      v: [
-        {
-          id: 1222,
-          name: 'Tea',
-          price: 1,
-        },
-        {
-          id: 1223,
-          name: 'Water',
-          price: 1,
-        }
-      ],
-    }
-  ]
+  hide_stock: false // 是否隐藏剩余库存
 }
 ```
 
-### properties Data Structure
+### properties 对象结构
 
 ```js
 [
+  // 商品属性
   {
-    k_id: 123,
-    k: 'More',
-    is_multiple: true,
+    k_id: 123, // 属性id
+    k: '加料', // 属性名
+    is_multiple: true, // 是否可多选
     v: [
       {
-        id: 1222,
-        name: 'Tea',
-        price: 1,
-        text_status: 0,
+        id: 1222, // 属性值id
+        name: '珍珠', // 属性值名
+        price: 1, // 属性值加价
+        text_status: 0, // 属性启用/禁用状态 0 - 禁用，1 - 启用
       },
       {
         id: 1223,
-        name: 'Water',
+        name: '椰果',
         price: 1,
         text_status: 1,
       },
@@ -274,100 +289,85 @@ sku: {
 ];
 ```
 
-### initialSku Data Structure
+### initialSku 对象结构
 
 ```js
 {
-  // Key：skuKeyStr
-  // Value：skuValueId
-  s1: '30349',
-  s2: '1193',
+  // 键：skuKeyStr（sku 组合列表中当前类目对应的 key 值）
+  // 值：skuValueId（规格值 id）
+  s1: '1',
+  s2: '1',
+  // 初始选中数量
   selectedNum: 3,
+  // 初始选中的商品属性
+  // 键：属性id
+  // 值：属性值id列表
   selectedProp: {
     123: [1222]
   }
 }
 ```
 
-### Goods Data Structure
+### goods 对象结构
 
 ```js
 goods: {
+  // 默认商品 sku 缩略图
   picture: 'https://img01.yzcdn.cn/1.jpg';
 }
 ```
 
-### customStepperConfig Data Structure
+### customStepperConfig 对象结构
 
 ```js
 customStepperConfig: {
-  // custom quota text
-  quotaText: 'only 5 can buy',
-  // custom callback when over limit
+  // 自定义限购文案
+  quotaText: '每次限购xxx件',
+  // 自定义步进器超过限制时的回调
   handleOverLimit: (data) => {
     const { action, limitType, quota, quotaUsed, startSaleNum } = data;
 
     if (action === 'minus') {
-      Toast(`at least select ${startSaleNum > 1 ? startSaleNum : 'one'}`);
+      Toast(startSaleNum > 1  ? `${startSaleNum}件起售` : '至少选择一件商品');
     } else if (action === 'plus') {
       // const { LIMIT_TYPE } = Sku.skuConstants;
       if (limitType === LIMIT_TYPE.QUOTA_LIMIT) {
-        let msg = `Buy up to ${quota}`;
-        if (quotaUsed > 0) msg += `，you already buy ${quotaUsed}`;
+        let msg = `单次限购${quota}件`;
+        if (quotaUsed > 0) msg += `，你已购买${quotaUsed}`;
         Toast(msg);
       } else {
-        Toast('not enough stock');
+        Toast('库存不够了');
       }
     }
   },
-  // custom callback when stepper value change
+  // 步进器变化的回调
   handleStepperChange: currentValue => {},
-  // stock
+  // 库存
   stockNum: 1999,
-  // stock formatter
+  // 格式化库存
   stockFormatter: stockNum => {},
 }
 ```
 
-### messageConfig Data Structure
 
-```js
-messageConfig: {
-  // the upload image callback
-  uploadImg: () => {
-    return new Promise((resolve) => {
-      setTimeout(() => resolve('https://img01.yzcdn.cn/upload_files/2017/02/21/FjKTOxjVgnUuPmHJRdunvYky9OHP.jpg!100x100.jpg'), 1000);
-    });
-  },
-  // max file size (MB)
-  uploadMaxSize: 3,
-  // placeholder config
-  placeholderMap: {
-    text: 'xxx',
-    tel: 'xxx',
-    ...
-  },
-  // Key：message name
-  // Value：message value
-  initialMessages: {
-    message: 'message value'
-  }
-}
-```
-
-### Events Params Data Structure
+### 添加购物车和点击购买回调函数接收的 skuData 对象结构
 
 ```js
 skuData: {
+  // 商品 id
   goodsId: '946755',
+  // 留言信息
   messages: {
     message_0: '12',
     message_1: ''
   },
+  // 另一种格式的留言，key 不同
   cartMessages: {
-    'Message 1': 'xxxx'
+    '留言1': 'xxxx'
   },
+  // 选择的商品数量
   selectedNum: 1,
+  // 选择的 sku 组合
   selectedSkuComb: {
     id: 2257,
     price: 100,
@@ -378,28 +378,28 @@ skuData: {
     properties: [
       {
         k_id: 123,
-        k: 'More',
+        k: '加料',
         is_multiple: true,
         v: [
           {
             id: 1223,
-            name: 'Water',
+            name: '椰果',
             price: 1
           }
         ]
       }
     ],
     property_price: 1
-  }
+  },
 }
 ```
 
-### Less Variables
+### 样式变量
 
-How to use: [Custom Theme](#/en-US/theme).
+组件提供了下列 Less 变量，可用于自定义样式，使用方法请参考[主题定制](#/zh-CN/theme)。
 
-| Name                       | Default Value           | Description |
-| -------------------------- | ----------------------- | ----------- |
-| @sku-item-background-color | `@background-color`     | -           |
-| @sku-icon-gray-color       | `@gray-4`               | -           |
-| @sku-upload-mask-color     | `rgba(50, 50, 51, 0.8)` | -           |
+| 名称                       | 默认值                  | 描述 |
+| -------------------------- | ----------------------- | ---- |
+| @sku-item-background-color | `@background-color`     | -    |
+| @sku-icon-gray-color       | `@gray-4`               | -    |
+| @sku-upload-mask-color     | `rgba(50, 50, 51, 0.8)` | -    |

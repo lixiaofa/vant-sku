@@ -7,12 +7,13 @@ import type { ConfigEnv, UserConfig } from 'vite'
 
 import { visualizer } from 'rollup-plugin-visualizer'
 import Components from 'unplugin-vue-components/vite'
+import dts from 'vite-plugin-dts'
 import AutoImport from 'unplugin-auto-import/vite'
 import { VantResolver } from 'unplugin-vue-components/resolvers'
 
 
 import vue from '@vitejs/plugin-vue'
-
+import { compression } from 'vite-plugin-compression2'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 
 import px2vw from '@yuo/postcss-px2vw'
@@ -35,7 +36,8 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
       vue(),
       vueJsx(),
       visualizer(),
-
+      compression(),
+      dts(),
       Components({
         resolvers: [VantResolver()],
       }),
