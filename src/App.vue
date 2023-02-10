@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: 司马老贼
  * @Date: 2023-01-06 10:00:57
- * @LastEditTime: 2023-02-09 20:36:12
+ * @LastEditTime: 2023-02-10 10:46:31
  * @LastEditors: 司马老贼
 -->
 <template>
@@ -39,11 +39,13 @@
 import { showToast } from 'vant';
 import 'vant/es/toast/style';
 
-import VanSku from './components/sku'
+// import VanSku from './components/sku'
 // import VanSku from '../dist/vant-sku.es'
 // import '../dist/index.css'
 
-// import VanSku from 'vant-sku'
+import VanSku from 'vant-sku'
+// import 'vant-sku/dist/index.css'
+
 
 
 
@@ -91,5 +93,6 @@ const  onPointClicked = (data)=> {  showToast('积分兑换')}
 
 
 <style lang="less">
+
 
 </style>

@@ -13,7 +13,9 @@
     ".": {
       "import": "./dist/vant-sku.es.js",
       "require": "./dist/vant-sku.umd.cjs"
-    }
+    },
+    "./dist/css": "./dist/css/index.css"
+    
   },
   "license": "MIT",
   "scripts": {
@@ -46,7 +48,7 @@
     "lodash": "^4.17.21",
     "tiny-emitter": "^2.1.0",
     "vant": "^4.0.2",
-    "vant-sku": "^1.0.1",
+    "vant-sku": "^1.0.2",
     "vue": "^3.2.45"
   },
   "devDependencies": {
