@@ -47,7 +47,7 @@
     "lodash": "^4.17.21",
     "tiny-emitter": "^2.1.0",
     "vant": "^4.0.2",
-    "vant-sku": "^1.0.5",
+    "vant-sku": "^1.0.6",
     "vue": "^3.2.45"
   },
   "devDependencies": {
