@@ -37,7 +37,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
       vueJsx(),
       visualizer(),
       compression(),
-      dts(),
+      dts({insertTypesEntry: true}),
       Components({
         resolvers: [VantResolver()],
       }),

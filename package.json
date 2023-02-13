@@ -9,6 +9,7 @@
   ],
   "main": "./dist/vant-sku.umd.cjs",
   "module": "./dist/vant-sku.es.js",
+  "typings": "./dist/index.d.ts",
   "exports": {
     ".": {
       "import": "./dist/vant-sku.es.js",
