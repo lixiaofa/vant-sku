@@ -407,7 +407,8 @@ skuData: {
 
 ## Donate
 
-If you find this project useful, you can buy author a glass of coffee :tropical_drink(如果你觉得这个项目帮助到了你，你可以帮作者买一杯咖啡鼓励 :tropical_drink): <br />
+If you find this project useful, you can buy author a glass of coffee : tropical_drink: <br />
+如果你觉得这个项目帮助到了你，你可以帮作者买一杯咖啡鼓励 :tropical_drink: <br />
 
 Wechat<br />
 ![image](https://github.com/lixiaofa/vant-sku/blob/master/pay/Wechat.png)
