@@ -112,6 +112,8 @@ export default defineComponent({
 
   created() {
     this.checkState(this.stepperMinLimit, this.stepperLimit);
+    console.log('startSaleNum' , this.startSaleNum)
+    console.log('quotaUsed' , this.quotaUsed)
   },
 
   methods: {
@@ -121,6 +123,7 @@ export default defineComponent({
     },
 
     onOverLimit(action) {
+      debugger
       this.skuEventBus.emit('sku:overLimit', {
         action,
         limitType: this.limitType,
@@ -131,6 +134,7 @@ export default defineComponent({
     },
 
     onChange(currentValue) {
+      debugger
       const intValue = parseInt(currentValue, 10);
       const { handleStepperChange } = this.customStepperConfig;
       handleStepperChange && handleStepperChange(intValue);

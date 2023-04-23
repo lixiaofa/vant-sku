@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: 司马老贼
  * @Date: 2023-01-06 11:17:41
- * @LastEditTime: 2023-02-06 17:38:05
+ * @LastEditTime: 2023-03-08 19:41:18
  * @LastEditors: 司马老贼
  */
 // , type PropType 
@@ -86,6 +86,7 @@ export default defineComponent({
     
   
       const previewImage = () => {
+        console.log('selectedValue1111' , selectedValue)
         skuEventBus.emit('sku:previewImage', selectedValue);
       };
       

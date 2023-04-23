@@ -404,3 +404,8 @@ skuData: {
 | @sku-item-background-color | `@background-color`     | -    |
 | @sku-icon-gray-color       | `@gray-4`               | -    |
 | @sku-upload-mask-color     | `rgba(50, 50, 51, 0.8)` | -    |
+
+## Donate
+
+If you find this project useful, you can buy author a glass of juice :tropical_drink:
+

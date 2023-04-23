@@ -357,22 +357,24 @@ export default defineComponent({
     },
 
     selectedText() {
-    
+      console.log('this.selectedSku' , this.selectedSku)
+      
       if (this.selectedSkuComb) {
         const values = this.selectedSkuValues.concat(this.selectedPropValues);
         return `已选择 ${values.map((item) => item.name).join(' ')}`;
       }
-
+      
+      
       const unselectedSku = this.skuTree
         .filter(
           (item) => this.selectedSku[item.k_s] === UNSELECTED_SKU_VALUE_ID
         )
         .map((item) => item.k);
-
+    
       const unselectedProp = this.propList
         .filter((item) => (this.selectedProp[item.k_id] || []).length < 1)
         .map((item) => item.k);
-
+      
       return `请选择 ${unselectedSku.concat(unselectedProp).join(' ')}`;
     },
   },
@@ -384,6 +386,7 @@ export default defineComponent({
     const skuEventBus = emitter ;
     this.skuEventBus = skuEventBus;
 
+
     skuEventBus.on('sku:select', this.onSelect);
     skuEventBus.on('sku:propSelect', this.onPropSelect);
     skuEventBus.on('sku:numChange', this.onNumChange);
@@ -394,10 +397,13 @@ export default defineComponent({
     skuEventBus.on('sku:buy', this.onBuy);
 
     this.resetStepper();
+   
     this.resetSelectedSku();
+   
 
     // 组件初始化后的钩子，抛出skuEventBus
     this.$emit('after-sku-create', skuEventBus);
+   
   },
 
   methods: {
@@ -424,6 +430,7 @@ export default defineComponent({
       this.skuTree.forEach((item) => {
         this.selectedSku[item.k_s] = UNSELECTED_SKU_VALUE_ID;
       });
+      
       this.skuTree.forEach((item) => {
         const key = item.k_s;
         // 规格值只有1个时，优先判断
@@ -533,6 +540,7 @@ export default defineComponent({
     },
 
     onSelect(skuValue) {
+      console.log('skuValue' , skuValue)
       // 点击已选中的sku时则取消选中
       this.selectedSku =
         this.selectedSku[skuValue.skuKeyStr] === skuValue.id
@@ -603,7 +611,7 @@ export default defineComponent({
       if (!this.previewOnClickImage) {
         return;
       }
-
+      console.log('imageList' , this.imageList)
       showImagePreview({
         images: this.imageList,
         startPosition: index,
@@ -669,6 +677,7 @@ export default defineComponent({
       if (error) {
         showToast(error);
       } else {
+        console.log('this.getSkuData()' , this.getSkuData())
         this.$emit(type, this.getSkuData());
       }
     },
@@ -832,6 +841,7 @@ export default defineComponent({
         }}
       />
     );
+    
 
 
 
