@@ -414,4 +414,4 @@ Wechat<br />
 ![alt text](https://github.com/lixiaofa/vant-sku/blob/master/pay/Wechat.png)
 
 Alipay <br />
-![alt text](https://github.com/lixiaofa/vant-sku/blob/master/pay/Alipay.png)
+![alt text](https://i.postimg.cc/dQ4WFgzL/Alipay.png)
