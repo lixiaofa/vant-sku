@@ -411,7 +411,7 @@ If you find this project useful, you can buy author a glass of coffee : tropical
 如果你觉得这个项目帮助到了你，你可以帮作者买一杯咖啡鼓励 :tropical_drink: <br />
 
 Wechat<br />
-![add image](https://github.com/lixiaofa/vant-sku/blob/master/pay/Wechat.png)
+![image](https://github.com/lixiaofa/vant-sku/blob/master/pay/Wechat.png)
 
 Alipay <br />
-![add image](https://github.com/lixiaofa/vant-sku/blob/master/pay/Alipay.png)
+![image](https://github.com/lixiaofa/vant-sku/blob/master/pay/Alipay.png)
