@@ -409,3 +409,6 @@ skuData: {
 
 If you find this project useful, you can buy author a glass of juice :tropical_drink:
 
+![image](https://github.com/lixiaofa/vant-sku/blob/master/pay/Wechat.png?raw=true)
+
+![image](https://github.com/lixiaofa/vant-sku/blob/master/pay/Alipay.png?raw=true)
