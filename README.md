@@ -26,7 +26,7 @@ import 'vant-sku/dist/index.css'
 
 
 ## 代码演示
-查看更多 请参照：[vant2.x sku](https://vant-contrib.gitee.io/vant/v2/#/zh-CN/sku)
+查看更多属性配置 请参照：[vant2.x sku](https://vant-contrib.gitee.io/vant/v2/#/zh-CN/sku)
 
 ### 基础用法
 
